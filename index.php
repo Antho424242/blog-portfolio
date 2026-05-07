@@ -1,3 +1,9 @@
+<?php
+require_once 'includes/db.php';
+
+echo "Connexion réussie";
+?>
+
 <?php require 'includes/header.php'; ?>
 
 <h2>Bienvenue sur mon blog portfolio</h2>
