@@ -23,20 +23,64 @@ $projects = $query->fetchAll();
 
 <a href="project-create.php">Créer un projet</a>
 
+<div class="row">
+
 <?php foreach ($projects as $project) : ?>
 
-    <h3><?php echo $project['title']; ?></h3>
+    <div class="col-md-6 mb-4">
 
-    <p><?php echo $project['description']; ?></p>
+        <div class="card shadow-sm h-100">
 
-    <p><?php echo $project['link']; ?></p>
+            <div class="card-body">
 
-    <a href="project-edit.php?id=<?php echo $project['id']; ?>">Modifier</a>
+                <h3 class="card-title">
+                    <?php echo $project['title']; ?>
+                </h3>
 
-    <a href="project-delete.php?id=<?php echo $project['id']; ?>">Supprimer</a>
+                <p class="card-text">
+                    <?php echo substr($project['description'], 0, 120); ?>...
+                </p>
 
-    <hr>
+                <?php if (!empty($project['link'])) : ?>
+
+                    <p>
+                        <a 
+                            href="<?php echo $project['link']; ?>" 
+                            target="_blank"
+                            class="btn btn-outline-secondary btn-sm"
+                        >
+                            Voir le lien
+                        </a>
+                    </p>
+
+                <?php endif; ?>
+
+                <div class="d-flex gap-2">
+
+                    <a 
+                        href="project-edit.php?id=<?php echo $project['id']; ?>"
+                        class="btn btn-primary btn-sm"
+                    >
+                        Modifier
+                    </a>
+
+                    <a 
+                        href="project-delete.php?id=<?php echo $project['id']; ?>"
+                        class="btn btn-danger btn-sm"
+                    >
+                        Supprimer
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 <?php endforeach; ?>
+
+</div>
 
 <?php require '../includes/footer.php'; ?>

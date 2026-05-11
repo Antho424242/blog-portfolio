@@ -27,20 +27,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h2>Créer un article</h2>
 
-<form method="POST" action="article-create.php">
+<div class="row justify-content-center">
 
-    <div>
-        <label for="title">Titre</label>
-        <input type="text" name="title" id="title" required>
+    <div class="col-md-8">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h2 class="mb-4">Créer un article</h2>
+
+                <form method="POST" action="article-create.php">
+
+                    <div class="mb-3">
+
+                        <label for="title" class="form-label">
+                            Titre
+                        </label>
+
+                        <input 
+                            type="text"
+                            name="title"
+                            id="title"
+                            class="form-control"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for="content" class="form-label">
+                            Contenu
+                        </label>
+
+                        <textarea
+                            name="content"
+                            id="content"
+                            rows="10"
+                            class="form-control"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Publier
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-        <label for="content">Contenu</label>
-        <textarea name="content" id="content" rows="10" required></textarea>
-    </div>
-
-    <button type="submit">Publier</button>
-
-</form>
+</div>
 
 <?php require '../includes/footer.php'; ?>

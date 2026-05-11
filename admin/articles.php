@@ -21,18 +21,50 @@ $articles = $query->fetchAll();
 
 <h2>Gestion des articles</h2>
 
+<div class="row">
+
 <?php foreach ($articles as $article) : ?>
 
-   <h3><?php echo $article['title']; ?></h3>
+    <div class="col-md-6 mb-4">
 
-   <p><?php echo $article['content']; ?></p>
+        <div class="card shadow-sm h-100">
 
-   <a href="article-edit.php?id=<?php echo $article['id']; ?>">Modifier</a>
+            <div class="card-body">
 
-   <a href="article-delete.php?id=<?php echo $article['id']; ?>">Supprimer</a>
+                <h3 class="card-title">
+                    <?php echo $article['title']; ?>
+                </h3>
 
-   <hr>
+                <p class="card-text">
+                    <?php echo substr($article['content'], 0, 120); ?>...
+                </p>
+
+                <div class="d-flex gap-2">
+
+                    <a 
+                        href="article-edit.php?id=<?php echo $article['id']; ?>"
+                        class="btn btn-primary btn-sm"
+                    >
+                        Modifier
+                    </a>
+
+                    <a 
+                        href="article-delete.php?id=<?php echo $article['id']; ?>"
+                        class="btn btn-danger btn-sm"
+                    >
+                        Supprimer
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 <?php endforeach; ?>
+
+</div>
 
 <?php require '../includes/footer.php'; ?>

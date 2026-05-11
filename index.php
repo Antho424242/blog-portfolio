@@ -6,7 +6,7 @@ echo "Connexion réussie";
 
 <?php require 'includes/header.php'; ?>
 
-<h2>Bienvenue sur mon blog portfolio</h2>
+<h2 class="text-primary">Bienvenue sur mon blog portfolio</h2>
 
 <p>Ce projet me permettra de présenter mes articles et mes projets.</p>
 

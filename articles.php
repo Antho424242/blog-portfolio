@@ -14,20 +14,37 @@ $articles = $query->fetchAll();
 
 <h2>Tous les articles</h2>
 
+<div class="row">
+
 <?php foreach ($articles as $article) : ?>
 
-    <h3>
-        <a href="article.php?id=<?php echo $article['id']; ?>">
-            <?php echo $article['title']; ?>
-        </a>
-    </h3>
+    <div class="col-md-6 mb-4">
 
-    <p>
-        <?php echo substr($article['content'], 0, 100); ?>...
-    </p>
+        <div class="card h-100 shadow-sm">
 
-    <hr>
+            <div class="card-body">
+
+                <h3 class="card-title">
+                    <a 
+                        href="article.php?id=<?php echo $article['id']; ?>"
+                        class="text-decoration-none"
+                    >
+                        <?php echo $article['title']; ?>
+                    </a>
+                </h3>
+
+                <p class="card-text">
+                    <?php echo substr($article['content'], 0, 100); ?>...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 <?php endforeach; ?>
+
+</div>
 
 <?php require 'includes/footer.php'; ?>
