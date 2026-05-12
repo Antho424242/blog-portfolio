@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 
 require_once '../includes/db.php';
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 $sql = "SELECT * FROM articles WHERE id = ?";
 
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             name="title"
                             id="title"
                             class="form-control"
-                            value="<?php echo $article['title']; ?>"
+                            value="<?php echo htmlspecialchars($article['title']); ?>"
                             required
                         >
 
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             rows="10"
                             class="form-control"
                             required
-                        ><?php echo $article['content']; ?></textarea>
+                        ><?php echo htmlspecialchars($article['content']); ?> </textarea>
 
                     </div>
 

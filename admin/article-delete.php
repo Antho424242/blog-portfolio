@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 
 require_once '../includes/db.php';
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 $sql = "DELETE FROM articles WHERE id = ?";
 

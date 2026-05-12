@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 
 require_once '../includes/db.php';
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 $sql = "SELECT * FROM projects WHERE id = ?";
 
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             name="title"
                             id="title"
                             class="form-control"
-                            value="<?php echo $project['title']; ?>"
+                            value="<?php echo htmlspecialchars($project['title']); ?>"
                             required
                         >
                     </div>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             rows="8"
                             class="form-control"
                             required
-                        ><?php echo $project['description']; ?></textarea>
+                        ><?php echo htmlspecialchars($project['description']); ?> </textarea>
                     </div>
 
                     <div class="mb-3">
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             name="link"
                             id="link"
                             class="form-control"
-                            value="<?php echo $project['link']; ?>"
+                            value="<?php echo htmlspecialchars($project['link']); ?>"
                         >
                     </div>
 

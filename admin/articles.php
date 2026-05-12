@@ -32,11 +32,11 @@ $articles = $query->fetchAll();
             <div class="card-body">
 
                 <h3 class="card-title">
-                    <?php echo $article['title']; ?>
+                    <?php echo htmlspecialchars($article['title']); ?>
                 </h3>
 
                 <p class="card-text">
-                    <?php echo substr($article['content'], 0, 120); ?>...
+                    <?php echo htmlspecialchars(substr($article['content'], 0, 120)); ?>...
                 </p>
 
                 <div class="d-flex gap-2">
@@ -51,6 +51,7 @@ $articles = $query->fetchAll();
                     <a 
                         href="article-delete.php?id=<?php echo $article['id']; ?>"
                         class="btn btn-danger btn-sm"
+                        onclick="return confirm('Voulez-vous vraiment supprimer cet article ?')"
                     >
                         Supprimer
                     </a>

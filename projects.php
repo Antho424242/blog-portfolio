@@ -18,11 +18,11 @@ $projects = $query->fetchAll();
 
     <h3>
         <a href="project.php?id=<?php echo $project['id']; ?>">
-            <?php echo $project['title']; ?>
+        <?php echo htmlspecialchars($project['title']); ?>
         </a>
     </h3>
 
-    <p><?php echo substr($project['description'], 0, 100); ?>...</p>
+    <p><?php echo htmlspecialchars(substr($project['description'], 0, 100)); ?>...</p>
 
     <?php if (!empty($project['link'])) : ?>
         <p><?php echo $project['link']; ?></p>

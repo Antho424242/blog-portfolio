@@ -34,18 +34,18 @@ $projects = $query->fetchAll();
             <div class="card-body">
 
                 <h3 class="card-title">
-                    <?php echo $project['title']; ?>
+                    <?php echo htmlspecialchars($project['title']); ?>
                 </h3>
 
                 <p class="card-text">
-                    <?php echo substr($project['description'], 0, 120); ?>...
+                    <?php echo htmlspecialchars(substr($project['description'], 0, 120)); ?>...
                 </p>
 
                 <?php if (!empty($project['link'])) : ?>
 
                     <p>
                         <a 
-                            href="<?php echo $project['link']; ?>" 
+                            href="<?php echo htmlspecialchars($project['link']); ?>"
                             target="_blank"
                             class="btn btn-outline-secondary btn-sm"
                         >
@@ -65,10 +65,11 @@ $projects = $query->fetchAll();
                     </a>
 
                     <a 
-                        href="project-delete.php?id=<?php echo $project['id']; ?>"
-                        class="btn btn-danger btn-sm"
+                         href="project-delete.php?id=<?php echo $project['id']; ?>"
+                         class="btn btn-danger btn-sm"
+                         onclick="return confirm('Voulez-vous vraiment supprimer ce projet ?')"
                     >
-                        Supprimer
+                    Supprimer
                     </a>
 
                 </div>

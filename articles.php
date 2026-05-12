@@ -29,12 +29,12 @@ $articles = $query->fetchAll();
                         href="article.php?id=<?php echo $article['id']; ?>"
                         class="text-decoration-none"
                     >
-                        <?php echo $article['title']; ?>
+                    <?php echo htmlspecialchars($article['title']); ?>
                     </a>
                 </h3>
 
                 <p class="card-text">
-                    <?php echo substr($article['content'], 0, 100); ?>...
+                <?php echo htmlspecialchars(substr($article['content'], 0, 100)); ?>...
                 </p>
 
             </div>
