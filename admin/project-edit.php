@@ -18,6 +18,10 @@ $query = $pdo->prepare($sql);
 $query->execute([$id]);
 
 $project = $query->fetch();
+if (!$project) {
+    header('Location: projects.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

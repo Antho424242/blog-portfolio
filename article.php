@@ -11,6 +11,10 @@ $query = $pdo->prepare($sql);
 $query->execute([$id]);
 
 $article = $query->fetch();
+if (!$article) {
+    header('Location: articles.php');
+    exit;
+}
 
 ?>
 

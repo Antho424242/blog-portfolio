@@ -11,6 +11,10 @@ $query = $pdo->prepare($sql);
 $query->execute([$id]);
 
 $project = $query->fetch();
+if (!$project) {
+    header('Location: projects.php');
+    exit;
+}
 
 ?>
 
