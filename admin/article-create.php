@@ -12,12 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $image = $_FILES['image']['name'];
+    $tmpName = $_FILES['image']['tmp_name'];
 
-    $sql = "INSERT INTO articles (title, content) VALUES (?, ?)";
+    $destination = dirname(__DIR__) . '/uploads/' . $image;
+
+    move_uploaded_file($tmpName, $destination);
+
+    $sql = "INSERT INTO articles (title, content, image) VALUES (?, ?, ?)";
 
     $query = $pdo->prepare($sql);
 
-    $query->execute([$title, $content]);
+    $query->execute([$title, $content, $image]);
 
     echo "Article créé avec succès";
 }
@@ -37,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <h2 class="mb-4">Créer un article</h2>
 
-                <form method="POST" action="article-create.php">
+                <form method="POST" action="article-create.php" enctype="multipart/form-data">
 
                     <div class="mb-3">
 
@@ -70,7 +76,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         ></textarea>
 
                     </div>
+                    <div class="mb-3">
 
+                    <label for="image" class="form-label">
+                    Image
+                    </label>
+
+                    <input
+                           type="file"
+                           name="image"
+                           id="image"
+                           class="form-control"
+                    >
+
+                    </div>
                     <button class="btn btn-primary">
                         Publier
                     </button>

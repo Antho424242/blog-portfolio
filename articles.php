@@ -23,7 +23,15 @@ $articles = $query->fetchAll();
         <div class="card h-100 shadow-sm">
 
             <div class="card-body">
+            <?php if ($article['image']) : ?>
 
+            <img 
+                 src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
+                 class="card-img-top"
+                 alt="Image article"
+            >
+
+<?php endif; ?>
                 <h3 class="card-title">
                     <a 
                         href="article.php?id=<?php echo $article['id']; ?>"

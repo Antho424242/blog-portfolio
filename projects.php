@@ -16,11 +16,21 @@ $projects = $query->fetchAll();
 
 <?php foreach ($projects as $project) : ?>
 
-    <h3>
-        <a href="project.php?id=<?php echo $project['id']; ?>">
+<?php if ($project['image']) : ?>
+
+    <img 
+        src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
+        width="300"
+        alt="Image projet"
+    >
+
+<?php endif; ?>
+
+<h3>
+    <a href="project.php?id=<?php echo $project['id']; ?>">
         <?php echo htmlspecialchars($project['title']); ?>
-        </a>
-    </h3>
+    </a>
+</h3>
 
     <p><?php echo htmlspecialchars(substr($project['description'], 0, 100)); ?>...</p>
 

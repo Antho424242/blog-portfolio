@@ -19,7 +19,15 @@ if (!$article) {
 ?>
 
 <?php require 'includes/header.php'; ?>
+<?php if ($article['image']) : ?>
 
+<img 
+    src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
+    class="img-fluid mb-4"
+    alt="Image article"
+>
+
+<?php endif; ?>
 <h2><?php echo htmlspecialchars($article['title']); ?></h2>
 
 <p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>

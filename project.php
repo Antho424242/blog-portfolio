@@ -20,6 +20,15 @@ if (!$project) {
 
 <?php require 'includes/header.php'; ?>
 
+<?php if ($project['image']) : ?>
+
+<img 
+    src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
+    class="img-fluid mb-4"
+    alt="Image projet"
+>
+
+<?php endif; ?>
 <h2><?php echo htmlspecialchars($project['title']); ?></h2>
 
 <p><?php echo nl2br(htmlspecialchars($project['description'])); ?></p>

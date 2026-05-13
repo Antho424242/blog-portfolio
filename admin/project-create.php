@@ -13,13 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $title = $_POST['title'];
     $description = $_POST['description'];
+    $image = $_FILES['image']['name'];
+    $tmpName = $_FILES['image']['tmp_name'];
+
+    $destination = dirname(__DIR__) . '/uploads/' . $image;
+
+    move_uploaded_file($tmpName, $destination);
     $link = $_POST['link'];
 
-    $sql = "INSERT INTO projects (title, description, link) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO projects (title, description, link, image) VALUES (?, ?, ?, ?)";
 
     $query = $pdo->prepare($sql);
 
-    $query->execute([$title, $description, $link]);
+    $query->execute([$title, $description, $link, $image]);
 
     header('Location: projects.php');
     exit;
@@ -41,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <h2 class="mb-4">Créer un projet</h2>
 
-                <form method="POST" action="project-create.php">
+                <form method="POST" action="project-create.php" enctype="multipart/form-data">
 
                     <div class="mb-3">
 
@@ -89,7 +95,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         >
 
                     </div>
+                    <div class="mb-3">
 
+                    <label for="image" class="form-label">
+                       Image
+                    </label>
+
+                 <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    class="form-control"
+                 >
+
+                </div>
                     <button class="btn btn-primary">
                         Créer le projet
                     </button>
