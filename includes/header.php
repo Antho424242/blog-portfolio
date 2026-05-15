@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Blog Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/blog-portfolio/assets/css/style.css?v=4">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
     <div class="container">
 
         <a class="navbar-brand" href="index.php">

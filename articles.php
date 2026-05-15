@@ -12,38 +12,43 @@ $articles = $query->fetchAll();
 
 <?php require 'includes/header.php'; ?>
 
-<h2>Tous les articles</h2>
+<h2 class="mb-4">Tous les articles</h2>
 
 <div class="row">
 
 <?php foreach ($articles as $article) : ?>
 
-    <div class="col-md-6 mb-4">
+    <div class="col-md-4 mb-4">
 
         <div class="card h-100 shadow-sm">
 
-            <div class="card-body">
             <?php if ($article['image']) : ?>
 
-            <img 
-                 src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
-                 class="card-img-top"
-                 alt="Image article"
-            >
+                <img 
+                    src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
+                    class="card-img-top object-fit-cover"
+                    style="height: 220px;"
+                    alt="Image article"
+                >
 
-<?php endif; ?>
-                <h3 class="card-title">
-                    <a 
-                        href="article.php?id=<?php echo $article['id']; ?>"
-                        class="text-decoration-none"
-                    >
+            <?php endif; ?>
+
+            <div class="card-body d-flex flex-column">
+
+                <h3 class="card-title h5">
                     <?php echo htmlspecialchars($article['title']); ?>
-                    </a>
                 </h3>
 
                 <p class="card-text">
-                <?php echo htmlspecialchars(substr($article['content'], 0, 100)); ?>...
+                    <?php echo htmlspecialchars(substr($article['content'], 0, 120)); ?>...
                 </p>
+
+                <a 
+                    href="article.php?id=<?php echo $article['id']; ?>"
+                    class="btn btn-primary mt-auto"
+                >
+                    Lire l’article
+                </a>
 
             </div>
 

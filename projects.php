@@ -12,34 +12,65 @@ $projects = $query->fetchAll();
 
 <?php require 'includes/header.php'; ?>
 
-<h2>Tous les projets</h2>
+<h2 class="mb-4">Tous les projets</h2>
+
+<div class="row">
 
 <?php foreach ($projects as $project) : ?>
 
-<?php if ($project['image']) : ?>
+    <div class="col-md-4 mb-4">
 
-    <img 
-        src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
-        width="300"
-        alt="Image projet"
-    >
+        <div class="card h-100 shadow-sm">
 
-<?php endif; ?>
+            <?php if ($project['image']) : ?>
 
-<h3>
-    <a href="project.php?id=<?php echo $project['id']; ?>">
-        <?php echo htmlspecialchars($project['title']); ?>
-    </a>
-</h3>
+                <img 
+                    src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
+                    class="card-img-top object-fit-cover"
+                    style="height: 220px;"
+                    alt="Image projet"
+                >
 
-    <p><?php echo htmlspecialchars(substr($project['description'], 0, 100)); ?>...</p>
+            <?php endif; ?>
 
-    <?php if (!empty($project['link'])) : ?>
-        <p><?php echo $project['link']; ?></p>
-    <?php endif; ?>
+            <div class="card-body d-flex flex-column">
 
-    <hr>
+                <h3 class="card-title h5">
+                    <?php echo htmlspecialchars($project['title']); ?>
+                </h3>
+
+                <p class="card-text">
+                    <?php echo htmlspecialchars(substr($project['description'], 0, 120)); ?>...
+                </p>
+
+                <?php if (!empty($project['link'])) : ?>
+
+                    <p>
+                        <a 
+                            href="<?php echo htmlspecialchars($project['link']); ?>"
+                            target="_blank"
+                        >
+                            Voir le site
+                        </a>
+                    </p>
+
+                <?php endif; ?>
+
+                <a 
+                    href="project.php?id=<?php echo $project['id']; ?>"
+                    class="btn btn-outline-primary mt-auto"
+                >
+                    Voir le projet
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 <?php endforeach; ?>
+
+</div>
 
 <?php require 'includes/footer.php'; ?>
