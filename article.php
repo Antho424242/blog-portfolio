@@ -19,19 +19,35 @@ if (!$article) {
 ?>
 
 <?php require 'includes/header.php'; ?>
-<?php if ($article['image']) : ?>
 
-<img 
-    src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
-    class="img-fluid mb-4"
-    alt="Image article"
->
+<article class="article-detail">
 
-<?php endif; ?>
-<h2><?php echo htmlspecialchars($article['title']); ?></h2>
+    <?php if ($article['image']) : ?>
 
-<p><?php echo nl2br(htmlspecialchars($article['content'])); ?></p>
+        <img 
+            src="uploads/<?php echo htmlspecialchars($article['image']); ?>"
+            class="article-hero-image"
+            alt="Image article"
+        >
 
-<a href="articles.php">Retour aux articles</a>
+    <?php endif; ?>
+
+    <div class="article-content">
+
+        <a href="articles.php" class="btn btn-outline-primary mb-4">
+            ← Retour aux articles
+        </a>
+
+        <h1 class="article-title">
+            <?php echo htmlspecialchars($article['title']); ?>
+        </h1>
+
+        <div class="article-text">
+            <?php echo nl2br(htmlspecialchars($article['content'])); ?>
+        </div>
+
+    </div>
+
+</article>
 
 <?php require 'includes/footer.php'; ?>

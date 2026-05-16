@@ -127,6 +127,46 @@ $projects = $queryProjects->fetchAll();
 
 </section>
 
+<section class="tools-section my-5">
+
+    <h2 class="text-center mb-5">
+        Mes outils
+    </h2>
+
+    <div class="row text-center">
+
+        <div class="col-md-3 mb-4">
+            <div class="card p-4 h-100">
+                <h3>💻</h3>
+                <h5>VS Code</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card p-4 h-100">
+                <h3>🐘</h3>
+                <h5>PHP</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card p-4 h-100">
+                <h3>🗄️</h3>
+                <h5>MySQL</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card p-4 h-100">
+                <h3>🐙</h3>
+                <h5>GitHub</h5>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
 <section class="my-5">
 
     <h2 class="mb-4">Derniers articles</h2>

@@ -20,29 +20,46 @@ if (!$project) {
 
 <?php require 'includes/header.php'; ?>
 
-<?php if ($project['image']) : ?>
+<article class="project-detail">
 
-<img 
-    src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
-    class="img-fluid mb-4"
-    alt="Image projet"
->
+    <?php if ($project['image']) : ?>
 
-<?php endif; ?>
-<h2><?php echo htmlspecialchars($project['title']); ?></h2>
+        <img 
+            src="uploads/<?php echo htmlspecialchars($project['image']); ?>"
+            class="project-hero-image"
+            alt="Image projet"
+        >
 
-<p><?php echo nl2br(htmlspecialchars($project['description'])); ?></p>
+    <?php endif; ?>
 
-<?php if (!empty($project['link'])) : ?>
+    <div class="project-content">
 
-    <p>
-        <a href="<?php echo htmlspecialchars($project['link']); ?>" target="_blank">
-            Voir le projet
+        <a href="projects.php" class="btn btn-outline-primary mb-4">
+            ← Retour aux projets
         </a>
-    </p>
 
-<?php endif; ?>
+        <h1 class="project-title">
+            <?php echo htmlspecialchars($project['title']); ?>
+        </h1>
 
-<a href="projects.php">Retour aux projets</a>
+        <div class="project-text">
+            <?php echo nl2br(htmlspecialchars($project['description'])); ?>
+        </div>
+
+        <?php if (!empty($project['link'])) : ?>
+
+            <a 
+                href="<?php echo htmlspecialchars($project['link']); ?>"
+                target="_blank"
+                class="btn btn-primary mt-4"
+            >
+                Voir le projet
+            </a>
+
+        <?php endif; ?>
+
+    </div>
+
+</article>
 
 <?php require 'includes/footer.php'; ?>
